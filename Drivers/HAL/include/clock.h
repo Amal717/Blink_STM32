@@ -19,6 +19,9 @@
 #define APB1_PRE                    RCC_CFGR_PPRE1_DIV4     /* APB1 prescaler */
 #define APB2_PRE                    RCC_CFGR_PPRE2_DIV2     /* APB2 prescaler */
 
+#define PCLK1_HZ                    24000000U
+#define PCLK2_HZ                    48000000U
+
 #if (HSE_PLL_M < 2U) || (HSE_PLL_M > 63U)
 #error "Invalid PLL_M"
 #endif

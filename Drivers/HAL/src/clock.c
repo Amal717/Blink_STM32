@@ -76,3 +76,4 @@ void clock_init(void)
     /* wait until PLL is actually selected as SYSCLK */
     while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL);
 }
+

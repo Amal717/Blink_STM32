@@ -21,15 +21,20 @@ message(STATUS "Project     : ${PROJECT_NAME}")
 message(STATUS "Build type  : ${CMAKE_BUILD_TYPE}")
 message(STATUS "Compiler    : ${CMAKE_C_COMPILER}")
 
+# --- Subdirectories ------------------------------------------------------
+add_subdirectory(Drivers/HAL)
+add_subdirectory(Core)
+
 # --- Executable ---------------------------------------------------------
 # All sources that produce the final .elf go here.
 # startup .s must be here - it contains the reset handler and vector table
 # Without it the chip has no entry point on power-on.
-add_executable(${PROJECT_NAME}
-    startup_stm32f407xx.s
-    Src/system_stm32f4xx.c
-    Src/clock.c
-    Src/main.c
+add_executable(${PROJECT_NAME})
+
+target_sources(${PROJECT_NAME}
+    PRIVATE
+        startup_stm32f407xx.s
+        Core/Src/main.c
 )
 
 # --- Include paths ------------------------------------------------------
@@ -46,8 +51,16 @@ target_include_directories(${PROJECT_NAME}  PRIVATE
 # STM32F407xx tells stm32f4xx.h which registers map to load
 # without this the CMSIS headers don't know peripheral base addresses
 target_compile_definitions(${PROJECT_NAME}  PRIVATE
-    STM32F407xx
+    PRIVATE
+        STM32F407xx
 )
+
+# --- link libraries ----------------------------------------------------
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        Core
+)
+
 
 # --- Linker options ---------------------------------------------------
 # -T    : your memory map - Flash origin, SRAM size, section placement

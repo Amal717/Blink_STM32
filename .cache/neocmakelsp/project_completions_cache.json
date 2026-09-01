@@ -1,0 +1,37 @@
+{
+  "date": "2026-08-27T12:49:27.365829995+05:30",
+  "data": {
+    "/home/amal/Project_Workspace/stm32_projects/blink/CMakeLists.txt": [
+      {
+        "label": "CMAKE_C_STANDARD",
+        "kind": 12,
+        "detail": "Value",
+        "documentation": "defined variable\nfrom: /home/amal/Project_Workspace/stm32_projects/blink/CMakeLists.txt"
+      },
+      {
+        "label": "CMAKE_C_STANDARD_REQUIRED",
+        "kind": 12,
+        "detail": "Value",
+        "documentation": "defined variable\nfrom: /home/amal/Project_Workspace/stm32_projects/blink/CMakeLists.txt"
+      },
+      {
+        "label": "CMAKE_C_EXTENSIONS",
+        "kind": 12,
+        "detail": "Value",
+        "documentation": "defined variable\nfrom: /home/amal/Project_Workspace/stm32_projects/blink/CMakeLists.txt"
+      },
+      {
+        "label": "CMAKE_EXPORT_COMPILE_COMMANDS",
+        "kind": 12,
+        "detail": "Value",
+        "documentation": "defined variable\nfrom: /home/amal/Project_Workspace/stm32_projects/blink/CMakeLists.txt\n\nGenerates compile_commands.json - clangd needs this for IntelliSense"
+      },
+      {
+        "label": "CMAKE_BUILD_TYPE",
+        "kind": 12,
+        "detail": "Value",
+        "documentation": "defined variable\nfrom: /home/amal/Project_Workspace/stm32_projects/blink/CMakeLists.txt"
+      }
+    ]
+  }
+}
