@@ -1,0 +1,15 @@
+menu "System Components"
+
+config HAL
+    bool "Enable HAL"
+    default y
+
+config FREERTOS
+    bool "Enable FreeRTOS"
+    default n
+
+if FREERTOS
+    source "FreeRTOS/Kconfig"
+endif
+
+endmenu

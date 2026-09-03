@@ -21,10 +21,6 @@ message(STATUS "Project     : ${PROJECT_NAME}")
 message(STATUS "Build type  : ${CMAKE_BUILD_TYPE}")
 message(STATUS "Compiler    : ${CMAKE_C_COMPILER}")
 
-# --- Subdirectories ------------------------------------------------------
-add_subdirectory(Drivers/HAL)
-add_subdirectory(Core)
-
 # --- Executable ---------------------------------------------------------
 # All sources that produce the final .elf go here.
 # startup .s must be here - it contains the reset handler and vector table
@@ -37,20 +33,37 @@ target_sources(${PROJECT_NAME}
         Core/Src/main.c
 )
 
+# --- Subdirectories ------------------------------------------------------
+add_subdirectory(Core)
+# Drivers
+if(CONFIG_HAL)
+    add_subdirectory(Drivers/HAL)
+endif()
+
+if(CONFIG_BB)
+    add_subdirectory(Drivers/BB)
+endif()
+
+# System components
+if(CONFIG_FREERTOS)
+    add_subdirectory(FreeRTOS)
+endif()
+
 # --- Include paths ------------------------------------------------------
 # CMSIS/Include     -> core_cm4.h, cmsis_gcc.h (ARM core peripherals)
 # STM32F4xx/Include -> stm32f407xx.h (peripheral register maps)
 # Inc               -> your own headers
-target_include_directories(${PROJECT_NAME}  PRIVATE
-    Inc
-    Drivers/CMSIS/Include
-    Drivers/CMSIS/Device/ST/STM32F4xx/Include
+target_include_directories(${PROJECT_NAME}  
+    PRIVATE
+        Inc
+        Drivers/CMSIS/Include
+        Drivers/CMSIS/Device/ST/STM32F4xx/Include
 )
 
 # --- Compile defintions ------------------------------------------------
 # STM32F407xx tells stm32f4xx.h which registers map to load
 # without this the CMSIS headers don't know peripheral base addresses
-target_compile_definitions(${PROJECT_NAME}  PRIVATE
+target_compile_definitions(${PROJECT_NAME}  
     PRIVATE
         STM32F407xx
 )

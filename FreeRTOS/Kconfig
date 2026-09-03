@@ -1,0 +1,34 @@
+if FREERTOS
+
+choice FREERTOS_PORT
+prompt "FreeRTOS port"
+
+config FREERTOS_PORT_ARM_CM4F
+bool "ARM Cortex-M4F"
+
+endchoice
+
+choice FREERTOS_HEAP
+prompt "FreeRTOS heap implementation"
+
+
+config FREERTOS_HEAP_1
+bool "heap_1"
+
+config FREERTOS_HEAP_2
+bool "heap_2"
+
+config FREERTOS_HEAP_3
+bool "heap_3"
+
+config FREERTOS_HEAP_4
+bool "heap_4"
+
+config FREERTOS_HEAP_5
+bool "heap_5"
+
+endchoice
+
+endif
+
+

@@ -2,3 +2,9 @@
 build/
 compile_commands.json
 
+# Cache Files
+.cache/*
+
+# Generated Kconfig files
+.config*
+
